@@ -146,6 +146,12 @@
             color: rgb(228, 226, 226);
         }
 
+        .notes-option .allNotes{
+           background: #11111c;
+           color: #ffffff;
+           border-color: rgb(88, 87, 87);
+        }
+
         .card-container{
             display: flex;
             flex-direction: column;
@@ -217,7 +223,7 @@
             font-size: 13px;
             cursor: pointer;
         }
-
+        
         .notes-option button i{
             font-size: 17px;
         }
@@ -228,6 +234,9 @@
             font-size: 15px;
             color: rgb(224, 222, 222);
         }
+
+
+
         
 
 
@@ -294,9 +303,27 @@
             color: #77758b;
         }
 
+        .light-mode .notes-option h3{
+            color: black;
+        }
+
+        .light-mode .note-heading h2{
+            color: black;
+        }
+
         .light-mode .create-note{
             background: #eaecf1;
             border: 1px solid gray;
+        }
+
+        .light-mode .note-title input{
+            background-color: white;
+            color: black;
+        }
+
+        .light-mode .note-title textarea{
+            background-color: white;
+            color: black;
         }
 
 
@@ -465,7 +492,7 @@
 
     <div class="notes-option">
 
-        <button>
+        <button class="allNotes">
             <i class="ri-layout-grid-line"></i>
             All notes
         </button>
@@ -604,15 +631,15 @@
 
                 <div class="note-title">
                     <h3>Title:</h3>
-                    <input type="text" placeholder="Enter note title">
+                    <input type="text" placeholder="Enter note title" id="tite">
 
                     <h3>Note:</h3>
-                    <textarea placeholder="Write your note here"></textarea>
+                    <textarea placeholder="Write your note here" id="textArea"></textarea>
 
                 </div>
 
                 <div class="cancel-button">
-                    <button>Save Note</button>
+                    <button id="submitBtn">Save Note</button>
                     <button class="red" id="CancelBtn">Cancel</button>
                     
                 </div>

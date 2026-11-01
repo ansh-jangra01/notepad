@@ -49,9 +49,13 @@ CancelBtn.addEventListener("click", function(){
 });
 
 
+let submitBtn = document.querySelector("#submitBtn");
+let inputvalue = document.querySelector("#tite");
+let textarea = document.querySelector("#textArea")
 
-let StarIcon = document.querySelector(".StarIcon");
-
-StarIcon.addEventListener("click", function(){
-    StarIcon.className = "ri-star-fil";
-})
+submitBtn.addEventListener("click", function(){
+    if(inputvalue.value.trim() === "" || textarea.value.trim() === ""){
+        alert("Please enter your note title and content!");
+        return;
+    }
+});
