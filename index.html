@@ -5,457 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notepad</title>
 
+    <link rel="stylesheet" href="notepad.css">
+
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body{
-            font-family: "Poppins", sans-serif;
-            background: #11111c;
-        }
-
-        header{
-            background: linear-gradient(135deg, #1b1b2b, #29234c);
-            padding: 15px 25px;
-            border-bottom: 1px solid rgb(68, 67, 67);
-        }
-
-        .title{
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .icon{
-            background: #322954;
-            height: 45px;
-            width: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #a78bfa;
-            border-radius: 15px;
-        }
-
-        .icon i{
-            font-size: 25px;
-        }
-
-        .note{
-            color: #ffffff;
-        }
-
-        .note h2{
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 1.4;
-        }
-
-        .note p{
-            color: #aaa8c0;
-            font-size: 12px;
-            font-weight: 400;
-        }
-
-        .title > i{
-            background: #322954;
-            border-radius: 50%;
-            color: #e2ddff;
-            padding: 10px;
-            font-size: 18px;
-            margin-left: auto;
-            cursor: pointer;
-            border: 1px solid rgb(122, 121, 121);
-        }
-
-        .search-engine{
-            height: 100%;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            padding: 20px;
-            
-        }
-
-        .input-bar{
-            display: flex;
-            align-items: center;
-            padding: 6px 18px;
-            background: #1e1e30;
-            height: 100%;
-            width: 950px;
-            color: #aaa8c0;
-            border-radius: 27px;
-            gap: 10px;
-        }
-
-        .input-bar > i {
-            font-size: 18px;
-        }
-
-        .input-bar input{
-            flex: 1;
-            height: 100%;
-            width: 100%;
-            border: none;
-            padding: 14px 0;
-            font-size: 18px;
-            color: #aaa8c0;
-            background: transparent;
-            outline: none;
-        }
-
-        .input-bar input::placeholder {
-            color: #aaa8c0;
-        }
-
-        .new-note{
-            background: #6c5ce7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 20px;
-            color: white;
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .new-note:hover {
-            background: #5846d6;
-        }
-
-        .all-notes{
-            height: 100%;
-            width: 100%;
-            padding: 20px;
-            color: rgb(228, 226, 226);
-        }
-
-        .notes-option .allNotes{
-           background: #11111c;
-           color: #ffffff;
-           border-color: rgb(88, 87, 87);
-        }
-
-        .card-container{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card{
-            background: #1e1e30;
-            padding: 15px;
-            border-radius: 15px;
-            line-height: 40px;
-            border: 1px solid #3e3a5c;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card-title{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-title i {
-            font-size: 20px;
-            color: #aaa8c0;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .card-title i:hover {
-            color: #facc15;
-        }
-
-        .card:hover{
-            transform: translateY(-3px);
-            border-color: #6c5ce7;
-        }
-
-        .card h3{
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        .card p{
-            font-size: 13px;
-        }
-
-        .card .edited{
-            font-size: 11px;
-        }
-
-        .notes-option{
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0 22px;
-            margin-top: 5px;
-        }
-
-        .notes-option button{
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: #1e1e30;
-            color: #bbb9c9;
-            border: 1px solid #343047;
-            border-radius: 12px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        
-        .notes-option button i{
-            font-size: 17px;
-        }
-
-        .notes-option h3{
-            margin-left: auto;
-            margin-right: 30px;
-            font-size: 15px;
-            color: rgb(224, 222, 222);
-        }
-
-
-
-        
-
-
-
-        .light-mode {
-            background: #e1e6f7;
-        }
-
-        .light-mode header {
-            background: linear-gradient(135deg, #e7e6e6, #dad6f0);
-            border-bottom: 2px solid #c1bfca;
-        }
-
-        .light-mode .note h2{
-            color: #222235;
-        }
-
-        .light-mode .note p{
-            color: #77758b;
-        }
-
-        .light-mode .title>i{
-            background: #eeeaff;
-            color: #6c5ce7;
-            border-color: #a6a3b4;
-        }
-
-        .light-mode .input-bar{
-            background: #ffffff;
-            color: #77758b;
-            border-color: #dedbea;
-        }
-
-        .light-mode .input-bar input{
-            color: #77758b;
-        }
-        
-        .light-mode .notes-option button{
-            background: #ffffff;
-            color: #55536b;
-            border-color: #dedbea;
-        }
-
-        .light-mode .all-notes{
-            color: #222235;
-        }
-
-        .light-mode .card{
-            background: #ffffff;
-            border-color: #e3e1ed;
-            color: #222235;
-            box-shadow: 0 4px 15px rgba(35, 30, 70, 0.04);
-        }
-
-        .light-mode .card p {
-            color: #626176;
-        }
-
-        .light-mode .card .edited {
-            color: #89869b;
-        }
-
-        .light-mode .card-title i {
-            color: #77758b;
-        }
-
-        .light-mode .notes-option h3{
-            color: black;
-        }
-
-        .light-mode .note-heading h2{
-            color: black;
-        }
-
-        .light-mode .create-note{
-            background: #eaecf1;
-            border: 1px solid gray;
-        }
-
-        .light-mode .note-title input{
-            background-color: white;
-            color: black;
-        }
-
-        .light-mode .note-title textarea{
-            background-color: white;
-            color: black;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        .create-note{
-            position: fixed;
-            top: 50%;                    
-            left: 50%;                    
-            transform: translate(-50%, -50%) scale(0.9);;
-            background: #11111c;
-            padding: 24px;
-            border-radius: 12px;
-            width: 90%;
-            z-index: 5;
-            transition: transform 0.3s ease;
-            max-width: 500px;
-        }
-
-        .create-note-details{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .note-heading {
-            position: relative; 
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-        }
-
-        .note-heading h2 {
-            margin: 0;
-            font-size: 22px;
-            color: #969696;
-        }
-
-      
-        
-        .note-title h3{
-            color: #969696;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .note-title input{
-            background: #1e1e30;
-            color: #969696;
-            margin-bottom: 10px;
-            width: 100%;
-            height: 100%;
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 15px;
-            border: 1px solid black;
-        }
-
-        .note-title textarea{
-            color: #969696;
-            background: #1e1e30;
-            margin-bottom: 10px;
-            width: 100%;
-            height: 300px;
-            padding: 10px;
-            font-size: 14px;
-            border-radius: 15px;
-            border: 1px solid black;
-            resize: none;
-        }
-
-        .cancel-button{
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 8px;
-        }
-
-        .cancel-button button{
-            padding: 18px;
-            font-size: 14px;
-            color: white;
-            background: #6c5ce7;
-            border-radius: 16px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .red{
-            background-color: rgb(168, 3, 3) !important;
-        }
-
-        .blurness{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            backdrop-filter: blur(5px);
-            transition: all 0.5 ease;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2 ease;
-        }
-
-        .blurness.active{
-            opacity: 1;;
-            pointer-events: auto;
-        }
-
-        .blurness.active .create-note{
-            transform: translate(-50% , -50%) scale(1);
-        }
-
-
-
-
-
-
-        
-    </style>
 </head>
 <body>
 
@@ -492,27 +48,27 @@
 
     <div class="notes-option">
 
-        <button class="allNotes">
+        <button class="allNotes filter-btn active">
             <i class="ri-layout-grid-line"></i>
             All notes
         </button>
 
-        <button>
+        <button class="filter-btn">
             <i class="ri-star-line"></i>
             Favourite
         </button>
 
-        <button>
+        <button class="filter-btn">
             <i class="ri-time-line"></i>
-            Recently added
+            Recently Added
         </button>
 
-        <button>
+        <button class="filter-btn">
             <i class="ri-time-line"></i>
-            Recently edited
+            Recently Edited
         </button>
 
-        <h3>Total Notes: 4 </h3>
+        <h3>Total Notes: <span id="incrCounting">4</span> </h3>
         
     </div>
 
@@ -523,12 +79,19 @@
         <div class="card-container">
 
             <div class="card">
+                
                 <div class="card-title">
                     <h3>Javascript Notes</h3>
-                    <i class="ri-star-line" id="StarIcon"></i>
+                    <i class="ri-star-line StarIcon"></i>
                 </div>
+
                 <p>Variable, functions, array and DOM...</p>
                 <p class="edited">Last edited just now</p>
+
+                <div class="delete-btn">
+                    <button class="removeCard">Delete</button>
+                    <button class="editCard">Edit <i class="ri-pencil-fill"></i></button>
+                </div>
                 
             </div>
             
@@ -538,10 +101,15 @@
             <div class="card">
                 <div class="card-title">
                     <h3>Project Ideas</h3>
-                    <i class="ri-star-line"></i>
+                    <i class="ri-star-line StarIcon"></i>
                 </div>
                 <p>Portfolio, notes app, job listing website...</p>
                 <p class="edited">Saved notes</p>
+
+                <div class="delete-btn">
+                    <button class="removeCard">Delete</button>
+                    <button class="editCard">Edit <i class="ri-pencil-fill"></i></button>
+                </div>
             </div>
 
             <!-- 3  -->
@@ -549,10 +117,15 @@
             <div class="card">
                 <div class="card-title">
                     <h3>Python Notes</h3>
-                    <i class="ri-star-line"></i>
+                    <i class="ri-star-line StarIcon"></i>
                 </div>
                 <p>Variable, functions, array and DOM...</p>
                 <p class="edited">Last edited just now</p>
+
+                <div class="delete-btn">
+                    <button class="removeCard">Delete</button>
+                    <button class="editCard">Edit <i class="ri-pencil-fill"></i></button>
+                </div>
             </div>
 
             <!-- 4 -->
@@ -560,10 +133,15 @@
             <div class="card">
                 <div class="card-title">
                     <h3>HTML Notes</h3>
-                    <i class="ri-star-line"></i>
+                    <i class="ri-star-line StarIcon"></i>
                 </div>
                 <p>Variable, functions, array and DOM...</p>
                 <p class="edited">Last edited just now</p>
+
+                <div class="delete-btn">
+                    <button class="removeCard">Delete</button>
+                    <button class="editCard">Edit <i class="ri-pencil-fill"></i></button>
+                </div>
             </div>
 
         </div>
@@ -594,31 +172,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    <!-- create note card  -->
 
     <div class="blurness">
         <div class="create-note">
@@ -648,6 +202,118 @@
 
         </div>
     </div>
+
+
+
+    <!-- For editing card  -->
+
+    <div class="edit-blurness">
+        <div class="edit-note">
+
+            <div class="edit-note-details">
+
+                <div class="edit-note-heading">
+                    <h2>Edit note</h2>
+                </div>
+
+                <div class="edit-note-title">
+                    <h3>Title:</h3>
+                    <input type="text" placeholder="Enter new title" id="editTitle">
+
+                    <h3>Note:</h3>
+                    <textarea placeholder="Write your note here" id="editTextArea"></textarea>
+
+                </div>
+
+                <div class="edit-button">
+                    <button id="saveChanges">Save Changes</button>
+                    <button class="edit-red" id="discardChanges">
+                        Discard Changes
+                    </button>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- edit alert empty input  -->
+
+    <div class="edit-overlay">
+        <div class="edit-custom-alert" id="EditcustomAlert">
+
+            <div class="edit-alert-box">
+                <i class="ri-error-warning-fill"></i>
+
+                <h2>Empty Note!</h2>
+
+                <p id="EditalertMessage">
+                    Please enter your note title and content!
+                </p>
+
+                <div class="edit-alert-divider"></div>
+
+                <button class="edit-alert-ok" id="editalertOk">
+                    Okay
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- alert option  -->
+
+    <div class="overlay">
+        <div class="custom-alert" id="customAlert">
+
+            <div class="alert-box">
+                <i class="ri-error-warning-fill"></i>
+
+                <h2>Empty Note!</h2>
+
+                <p id="alertMessage">
+                    Please enter your note title and content!
+                </p>
+
+                <div class="alert-divider"></div>
+
+                <button class="alert-ok" id="alertOk">
+                    Okay
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+    <!-- submit complete done -->
+
+    <div class="submit-done">
+
+        <p>Saved Successfully</p>
+    </div>
+
+
+
+    <!-- delete message  -->
+     
+    <div class="delete-done">
+
+        <p>Delete Successfully</p>
+    </div>
+
+
+
+
 
 
 <script src="notepad.js"></script>
